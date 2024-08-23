@@ -148,7 +148,7 @@ function App() {
       {isShowToken && 
         <div id='token_div'>
           <h4>Registration Token</h4>
-          {nowToken && <p id='token'>{nowToken}</p>}
+          {nowToken && <textarea id='token' value={nowToken} readOnly></textarea>}
           <button id='delete-token-button' onClick={deleteTokenFromFirebase}>Delete Token</button>
         </div>
       }
@@ -159,7 +159,14 @@ function App() {
           <button id='request-permission-button' onClick={requestPermission}>Request Permission</button>
         </div>
       }
-      <div id='messages'></div>
+      <div id='messages'>
+        <h4>Messages</h4>
+        <ul>
+          {messages.map((message, index) => (
+            <li key={index}>{JSON.stringify(message)}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
